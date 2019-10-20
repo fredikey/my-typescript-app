@@ -1,24 +1,22 @@
-import React, { useState, useEffect } from 'react'
-import { IIncome } from './types'
+import React, { useContext } from 'react'
 import { Info, Button } from './components'
-
-const DEFAULT_VALUE_MONEY: number = 20
-const DEFAULT_VALUE_INCOME: IIncome = { perClick: 1, perTime: 0 }
+import { MoneyStoreContext, IncomeStoreContext } from './stores'
+import { observer } from 'mobx-react-lite'
 
 const App = () => {
-  const [money, setMoney] = useState(DEFAULT_VALUE_MONEY)
-  const [income, setIncome] = useState<IIncome>(DEFAULT_VALUE_INCOME)
+  const MoneyStore = useContext(MoneyStoreContext)
+  const IncomeStore = useContext(IncomeStoreContext)
 
   const add = (): void => {
-    setMoney(money => money + income.perClick)
+    MoneyStore.add(IncomeStore.value.perClick)
   }
 
   return (
     <div className="app">
-      <Info money={money} income={income} />
+      <Info money={MoneyStore.value} income={IncomeStore.value} />
       <Button title="Click" onClick={add} />
     </div>
   )
 }
 
-export default App
+export default observer(App)
