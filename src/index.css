@@ -25,26 +25,10 @@ button {
 button:hover {
 	opacity: .55;
 }
+
 .app {
 	flex: 1;
 	display: flex;
 	height: 100vh;
 	padding: 50px;
-}
-.info {
-	display: flex;
-	flex-direction: column;
-}
-.info span {
-	margin-top: 15px;
-}
-.clickButton {
-	border: 2px solid #333;
-	width: 100px;
-	height: 50px;
-	display: flex;
-	font-size: 20px;
-	align-items: center;
-	justify-content: center;
-	border-radius: 11px;
 }

@@ -1,0 +1,7 @@
+.info {
+	display: flex;
+	flex-direction: column;
+}
+.info span {
+	margin-top: 15px;
+}
