@@ -1,4 +1,3 @@
-import React from 'react'
 import { action, observable } from 'mobx'
 import { DEFAULT_VALUE_MONEY } from '../config'
 
@@ -20,10 +19,10 @@ class MoneyStore {
 
   @action async getValueFromStorage(): Promise<void> {
     const value = await localStorage.getItem('money')
-    if (value) {
+    if (value !== null) {
       this.value = Number(value)
     }
   }
 }
 
-export default React.createContext(new MoneyStore())
+export default new MoneyStore()
