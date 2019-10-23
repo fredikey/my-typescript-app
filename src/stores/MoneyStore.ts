@@ -7,24 +7,23 @@ class MoneyStore {
 
   @action add(count: number): void {
     this.value += count
-	  this.setValueInStorage()
+    this.setValueInStorage()
   }
   @action pay(price: number): void {
     this.value -= price
-	  this.setValueInStorage()
+    this.setValueInStorage()
   }
-  
-  @action setValueInStorage (): void {
-  	localStorage.setItem('money', `${this.value}`)
+
+  @action setValueInStorage(): void {
+    localStorage.setItem('money', `${this.value}`)
   }
-  
-  @action async getValueFromStorage (): Promise<void> {
-  	const value = await localStorage.getItem('money')
-	  if (value) {
-	  	this.value = Number(value)
-	  }
+
+  @action async getValueFromStorage(): Promise<void> {
+    const value = await localStorage.getItem('money')
+    if (value) {
+      this.value = Number(value)
+    }
   }
-  
 }
 
 export default React.createContext(new MoneyStore())
